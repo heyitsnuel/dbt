@@ -1,0 +1,4 @@
+sources:
+  - name: lewagon_data_analytics
+    tables:
+      - name: gwz_customers
