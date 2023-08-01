@@ -27,5 +27,4 @@ models:
           description: "The status of shipping"
           tests:
             - accepted_values:
-                values:
-                  - ['In Progress', 'In Transit', 'Delivered', 'Cancelled']
+                values: ['In Progress', 'In Transit', 'Delivered', 'Cancelled']
