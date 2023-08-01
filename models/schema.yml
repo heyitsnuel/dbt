@@ -9,6 +9,9 @@ models:
             tests:
                 - unique
                 - not_null
+                - relationships:
+                    field: customers_id
+                    to: ref('sales')
           - name: name
             description: "The first name of the customer"
             tests:
