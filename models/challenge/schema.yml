@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+    - name: raw # the name we give to the sources
+      schema: lewagon_data_analytics # the dataset name in bigquery where the source tables reside
+      tables:
+        - name: sales # the name we give to the table
+          identifier: raw_gz_sales # the actual table name in bigquery
+          description: "Greenweez sales table"
+          freshness: 
+            warn_after:
+              count: 90
+              period: day
+          loaded_at_field: "CAST (date_date AS TIMESTAMP)"
+        - name: product
+          identifier: raw_gz_product
+          description: "Greenweez product table"
+          columns:
+            - name: products_id
+              description: "Unique identifier of the product"
+              tests:
+                - unique
+                - not_null
+            - name: purchase_price
+              description: "The price to purchase the product"
+        - name: ship
+          identifier: raw_gz_ship
+          description: "Greenweez shipping table"
+          columns:
+            - name: orders_id
+              description: "Unique identifier of the product"
+              tests:
+                - unique
+                - not_null
+            - name: shipping_fee
+              description: "The fee of shipping"
+            - name: log_cost
+              description: "The cost of logistics"
+            - name: ship_cost
+              description: "The cost of shipping"

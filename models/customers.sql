@@ -8,4 +8,3 @@ SELECT
   number_of_orders,
   total_turnover
 FROM `civic-genius-328315.lewagon_data_analytics.gwz_customers`
--- FROM {{ source('lewagon_data_analytics', 'gwz_customers') }}
