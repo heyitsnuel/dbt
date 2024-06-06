@@ -1,5 +1,3 @@
-{{ config(materialized='table') }}
-
 SELECT
   orders_id,
   shipping_fee,
