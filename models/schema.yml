@@ -1,30 +1,27 @@
 version: 2
 
+sources:
+  - name: raw
+    schema: lewagon_data_analytics
+    tables:
+    - name: cust
+      identifier: gwz_customers
+      tests:
+        - unique:
+            column_name: id
+
 models:
-    - name: customers
-      description: "A table containing customer details"
-      columns:
-        - name: id
-          description: "The primary key for this table"
-          tests:
-            - unique
-            - not_null
-            # - relationships:
-            #     field: customers_id
-            #     to: ref('sales')
-        # - name: name
-        #   description: "The first name of the customer"
-        #   tests:
-        #     - not_null
-        # - name: creation_date
-        #   description: "The date when the customer is created"
-        #   tests:
-        #     - not_null
-    # - name: shipping
-    #   description: "A table containing parcel shipping details"
-    #   columns:
-    #     - name: status
-    #       description: "The status of shipping"
-    #       tests:
-    #         - accepted_values:
-    #             values: ['In Progress', 'In Transit', 'Delivered', 'Cancelled']
+  - name: customers
+    description: This table contains customers information
+    columns:
+      - name: id
+        description: The customer id as the primary key of the table
+        tests:
+        - unique
+        - not_null
+      - name: name
+        description: The customer's first name
+      - name: surname
+        description: The customer's last name
+      - name: creation_date
+        description: The date when the customer was created
