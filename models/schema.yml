@@ -32,3 +32,6 @@ models:
         tests:
           - accepted_values:
               values: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+      - name: price
+        data_tests:
+          - is_positive
