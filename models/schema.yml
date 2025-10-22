@@ -1,24 +1,38 @@
 version: 2
 
-# sources:
-#   - name: raw_circle
-#     schema: raw_data_circle
-#     tables:
-#     - name: cc_stock
-#       identifier: raw_cc_stock
-#       tests:
-#         - unique:
-#             column_name: "(model || '-' || color || '-' || size)"
+sources:
+  - name: raw_circle
+    schema: lewagon_data_analytics
+    tables:
+    - name: stock
+      identifier: raw_cc_stock
+      tests:
+        - unique:
+            column_name: "(model || '-' || color || '-' || size)"
+    - name: sales
+      identifier: raw_cc_sales
+      tests:
+        - not_null:
+            column_name: date_date
+      freshness:
+        warn_after:
+          count: 6
+          period: hour
+        error_after:
+          count: 3
+          period: day
+      loaded_at_field: date_date
 
-# models:
-#   - name: stock
-#     description: product stock information
-#     columns:
-#       - name: product_id
-#         tests:
-#         - unique
-#         - not_null
-#       - name: size
-#         tests:
-#           - accepted_values:
-#             values: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+models:
+  - name: raw_cc_stock
+    description: product stock information
+    columns:
+      - name: product_id
+        description: identifier of the product
+        tests:
+        - unique
+        - not_null
+      - name: size
+        tests:
+          - accepted_values:
+              values: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
