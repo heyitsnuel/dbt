@@ -1,23 +1,23 @@
 version: 2
 
-# sources:
-#   - name: raw_circle
-#     schema: lewagon_data_analytics
-#     tables:
-#     - name: stock
-#       identifier: raw_cc_stock
-#       tests:
-#         - unique:
-#             column_name: "(model || '_' || color || '_' || size)"
-#     - name: sales
-#       identifier: raw_cc_sales
-#       tests:
-#         - not_null:
-#             column_name: date_date
-#       freshness:
-#         warn_after: {count: 6, period: hour}
-#         error_after: {count: 3, period: day}
-#       loaded_at_field: CAST(date_date AS TIMESTAMP) 
+sources:
+  - name: raw_circle
+    schema: lewagon_data_analytics
+    tables:
+    - name: stock
+      identifier: raw_cc_stock
+      tests:
+        - unique:
+            column_name: "(model || '_' || color || '_' || size)"
+    - name: sales
+      identifier: raw_cc_sales
+      tests:
+        - not_null:
+            column_name: date_date
+      freshness:
+        warn_after: {count: 6, period: hour}
+        error_after: {count: 3, period: day}
+      loaded_at_field: CAST(date_date AS TIMESTAMP) 
 
 models:
   - name: raw_cc_stock
