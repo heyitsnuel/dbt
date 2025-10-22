@@ -8,7 +8,7 @@ sources:
       identifier: raw_cc_stock
       tests:
         - unique:
-            column_name: "(model || '-' || color || '-' || size)"
+            column_name: "(model || '_' || color || '_' || size)"
     - name: sales
       identifier: raw_cc_sales
       tests:
